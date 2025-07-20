@@ -1,9 +1,16 @@
 ## how to delete
+from bookshelf.models import Book
 
-## command
+# Retrieve the book you want to delete
+### command 
 '''python
- BOOK.objects.get(id=2).delete()
+book = Book.objects.get(title="1984")
+
+# Delete the book
+'''python
+book.delete()
+
 
  ## output
  '''bash
- (1, {'bookshelf.BOOK': 1})
+> (1, {'bookshelf.BOOK': 1})
