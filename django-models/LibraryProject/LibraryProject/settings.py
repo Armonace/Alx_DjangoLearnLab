@@ -1,3 +1,5 @@
+import os
+
 """
 Django settings for LibraryProject project.
 
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'bookshelf',
+    'relationship_app'
     
 ]
 
@@ -57,7 +60,7 @@ ROOT_URLCONF = 'LibraryProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'relationship_app', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
