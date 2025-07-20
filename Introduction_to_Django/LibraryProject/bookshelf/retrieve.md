@@ -2,6 +2,7 @@
 
 ### command
 '''python
+book = Book.objects.get(title="1984")
  book.__dict__
 
 
