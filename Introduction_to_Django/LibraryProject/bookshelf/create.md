@@ -3,7 +3,7 @@
 ### command
 '''python
 >>> from bookshelf.models import BOOK
->>> BOOK.objects.create(title="valkyrie", author="George Orwell", publication_year=2025)
+>>> Book.objects.create(title="1984", author="George Orwell", publication_year=1949)
 '''
 
 
