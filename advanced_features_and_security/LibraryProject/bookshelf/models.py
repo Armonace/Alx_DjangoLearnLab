@@ -1,11 +1,11 @@
-from django.contrib.auth.models import AbstractUser
-from django.db import models
+# bookshelf/models.py
+
+from django.conf import settings
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-
-
+# Custom user manager
 class CustomUserManager(BaseUserManager):
     use_in_migrations = True
 
@@ -23,27 +23,43 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
-        if extra_fields.get('is_staff') is not True:
+        if not extra_fields.get('is_staff'):
             raise ValueError(_('Superuser must have is_staff=True.'))
-        if extra_fields.get('is_superuser') is not True:
+        if not extra_fields.get('is_superuser'):
             raise ValueError(_('Superuser must have is_superuser=True.'))
 
         return self.create_user(username, email, password, **extra_fields)
 
-
-
+# Custom user model
 class CustomUser(AbstractUser):
-    date_of_birth = models.DateField(null=True, blank=True)
-    profile_photo = models.ImageField(upload_to='profile_photos/', null=True, blank=True)
+    objects = CustomUserManager()
 
     def __str__(self):
         return self.username
 
-
-class Book(models.Model):  # Not BOOK or book, it must be exactly Book
+# Book model
+class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=100)
-    publication_year = models.CharField()
+    publication_year = models.CharField(max_length=4)
 
     def __str__(self):
         return f"{self.title} by {self.author}"
+
+# Article model
+class Article(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+
+    class Meta:
+        permissions = [
+            ("can_view", "Can view article"),
+            ("can_create", "Can create article"),
+            ("can_edit", "Can edit article"),
+            ("can_delete", "Can delete article"),
+        ]
+
+    def __str__(self):
+        return self.title
+
