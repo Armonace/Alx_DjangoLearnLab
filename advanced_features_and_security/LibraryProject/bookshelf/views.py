@@ -26,3 +26,11 @@ def article_edit(request, pk):
 def article_delete(request, pk):
     # logic to delete article
     ...
+from django.shortcuts import render
+from .models import Book
+from django.contrib.auth.decorators import permission_required
+
+@permission_required('bookshelf.can_view', raise_exception=True)
+def book_list(request):
+    books = Book.objects.all()
+    return render(request, 'bookshelf/book_list.html', {'books': books})
