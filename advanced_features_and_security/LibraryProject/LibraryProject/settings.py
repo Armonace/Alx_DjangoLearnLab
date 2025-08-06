@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     
 ]
 
+
 AUTH_USER_MODEL = 'bookshelf.CustomUser'
 # (For profile photos/media)
 MEDIA_URL = '/media/'
@@ -134,3 +135,33 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+# Disable debug mode for production
+DEBUG = False
+
+
+INSTALLED_APPS += ['csp']
+
+MIDDLEWARE += [
+    'csp.middleware.CSPMiddleware',
+]
+
+CSP_DEFAULT_SRC = ("'self'",)
+CSP_SCRIPT_SRC = ("'self'",)  # Add any trusted CDNs if needed
+CSP_STYLE_SRC = ("'self'",)   # Same here
+
+# SECURITY SETTINGS
+DEBUG = False
+
+# Enforce HTTPS for cookies
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+# Enable browser-based protections
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# Prevent your site from being embedded in frames
+X_FRAME_OPTIONS = 'DENY'
+
+# Optional: Redirect all HTTP to HTTPS (only in production with HTTPS setup)
+SECURE_SSL_REDIRECT = True
