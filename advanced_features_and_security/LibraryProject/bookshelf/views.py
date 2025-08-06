@@ -36,18 +36,7 @@ def book_list(request):
     return render(request, 'bookshelf/book_list.html', {'books': books})
 
 from django.shortcuts import render, redirect
-from .forms import BookForm  # You must have a BookForm defined
-
-def add_book(request):
-    if request.method == 'POST':
-        form = BookForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('book_list')  # Or any view name you have
-    else:
-        form = BookForm()
-    return render(request, 'bookshelf/book_form.html', {'form': form})
-
+from .forms import ExampleForm  # You must have a BookForm defined
 
 
 def search_books(request):
@@ -56,3 +45,14 @@ def search_books(request):
     if query:
         books = books.filter(title__icontains=query)
     return render(request, 'bookshelf/book_list.html', {'books': books})
+
+
+def example_form_view(request):
+    if request.method == 'POST':
+        form = ExampleForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('book_list')  # Or another redirect
+    else:
+        form = ExampleForm()
+    return render(request, 'bookshelf/form_example.html', {'form': form})
