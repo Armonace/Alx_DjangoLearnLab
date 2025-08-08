@@ -20,3 +20,15 @@ GET /api/books/?ordering=publication_year
 
 # Order descending
 GET /api/books/?ordering=-publication_year
+
+
+## API Testing Guide
+
+This test suite ensures the API endpoints for the `Book` model function correctly.
+
+### What’s Tested:
+- List, Create, Update, Delete Book endpoints
+- Search and ordering functionalities
+- Authentication/permission enforcement
+
+### How to Run:

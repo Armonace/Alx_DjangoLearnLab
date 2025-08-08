@@ -20,9 +20,10 @@ class Book(models.Model):
         publication_year (int): Year the book was published.
         author (ForeignKey): Link to the related Author.
     """
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
     publication_year = models.IntegerField()
-    author = models.ForeignKey(Author, related_name='books', on_delete=models.CASCADE)
-
+    
     def __str__(self):
         return self.title

@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'api',
     'django_filters',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -124,9 +124,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-INSTALLED_APPS += [
-    'django_filters',
-]
+
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': [
