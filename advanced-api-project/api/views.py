@@ -10,6 +10,9 @@ from django_filters.rest_framework import DjangoFilterBackend # type: ignore
 # Required for filter backend setup (used by DjangoFilterBackend)
 from django_filters import rest_framework as filters # type: ignore
 from rest_framework.filters import SearchFilter
+from django_filters import rest_framework as filters # type: ignore
+from rest_framework.filters import SearchFilter, OrderingFilter
+
 
 
 
