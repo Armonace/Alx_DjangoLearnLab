@@ -20,6 +20,12 @@ class BookListView(generics.ListAPIView):
     serializer_class = BookSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
+    filter_backends = [
+        filters.DjangoFilterBackend,     # Enables filtering
+        filters.OrderingFilter,          # Enables ordering
+        SearchFilter                     # Enables search
+    ]
+
     # Filter, Search, and Ordering
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_fields = ['title', 'author__name', 'publication_year']
@@ -73,3 +79,5 @@ class BookDeleteView(generics.DestroyAPIView):
 
 # BookDeleteView:
 # Authenticated users can delete a book by ID.
+
+filter_backends = [filters.DjangoFilterBackend, filters.OrderingFilter, SearchFilter]
