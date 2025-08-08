@@ -81,3 +81,4 @@ class BookDeleteView(generics.DestroyAPIView):
 # Authenticated users can delete a book by ID.
 
 filter_backends = [filters.DjangoFilterBackend, filters.OrderingFilter, SearchFilter]
+filter_backends = [filters.DjangoFilterBackend, OrderingFilter, SearchFilter]
