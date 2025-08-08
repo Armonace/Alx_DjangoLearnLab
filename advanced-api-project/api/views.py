@@ -10,8 +10,9 @@ from django_filters.rest_framework import DjangoFilterBackend # type: ignore
 # Required for filter backend setup (used by DjangoFilterBackend)
 from django_filters import rest_framework as filters # type: ignore
 from rest_framework.filters import SearchFilter
-from django_filters import rest_framework as filters # type: ignore
-from rest_framework.filters import SearchFilter, OrderingFilter
+import rest_framework.filters as filters
+from django_filters.rest_framework import DjangoFilterBackend # type: ignore
+
 
 
 
@@ -84,4 +85,5 @@ class BookDeleteView(generics.DestroyAPIView):
 # Authenticated users can delete a book by ID.
 
 filter_backends = [filters.DjangoFilterBackend, filters.OrderingFilter, SearchFilter]
-filter_backends = [filters.DjangoFilterBackend, OrderingFilter, SearchFilter]
+filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+
