@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from rest_framework.test import APITestCase
 from rest_framework import status
 from .models import Book
@@ -5,6 +6,16 @@ from .models import Book
 class BookAPITests(APITestCase):
 
     def setUp(self):
+        # Create a test user
+        self.user = User.objects.create_user(
+            username="testuser",
+            password="testpass123"
+        )
+
+        # Log in the test user
+        self.client.login(username="testuser", password="testpass123")
+
+        # Create an initial book
         self.book = Book.objects.create(
             title="Test Book",
             author="John Doe",
