@@ -1,11 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
-class Tag(models.Model):
-    name = models.CharField(max_length=50, unique=True)
-
-    def __str__(self):
-        return self.name
+from taggit.managers import TaggableManager
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
@@ -17,7 +12,7 @@ class Post(models.Model):
         related_name='posts'  # Allows user.posts.all() to get all posts by that user
 
     )
-    tags = models.ManyToManyField(Tag, blank=True, related_name='posts')
+    tags = TaggableManager()  # M2M field from django-taggit
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

@@ -1,11 +1,15 @@
 from django import forms
 from .models import Post
 from .models import Comment
+from taggit.forms import TagWidget
 
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ["title", "content"]  # author is set in the view
+        widgets = {
+            'tags': TagWidget(),  # tag input widget
+        }
 
     # (Optional) simple example validation
     def clean_title(self):
@@ -24,7 +28,7 @@ class CommentForm(forms.ModelForm):
 
 
         from django import forms
-from .models import Post, Tag
+from taggit.models import Tag 
 
 class PostForm(forms.ModelForm):
     tags = forms.CharField(required=False, help_text="Enter tags separated by commas")
