@@ -175,3 +175,21 @@ Logout
 Click Logout
 
 You’ll be redirected to login page
+
+
+Create: LoginRequiredMixin → only authenticated users can create posts.
+
+Edit/Delete: AuthorRequiredMixin (via UserPassesTestMixin) → only the author can edit or delete their post.
+
+List/Detail: Public (no login required).
+Visit /posts/ → list visible to everyone.
+
+Click a title → /posts/<pk>/ shows the full post.
+
+Log in and go to /posts/new/ → create a post; author auto-assigned.
+
+As the post’s author, visit /posts/<pk>/edit/ → you can edit.
+
+As a different user, trying to edit/delete should be forbidden (403).
+
+Delete flow at /posts/<pk>/delete/.
