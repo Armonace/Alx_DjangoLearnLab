@@ -193,3 +193,19 @@ As the post’s author, visit /posts/<pk>/edit/ → you can edit.
 As a different user, trying to edit/delete should be forbidden (403).
 
 Delete flow at /posts/<pk>/delete/.
+
+# Comment System in django_blog
+
+## Features
+- Users can view all comments under a post.
+- Logged-in users can add new comments.
+- Comment authors can edit or delete their own comments.
+
+## URL Patterns
+- /post/<pk>/ → Post detail with comments and comment form.
+- /comment/<pk>/update/ → Edit a comment.
+- /comment/<pk>/delete/ → Delete a comment.
+
+## Permissions
+- Only authenticated users can comment.
+- Only comment authors can edit/delete their own comments.
