@@ -77,6 +77,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        'USER': 'mydbuser',
         'HOST': 'localhost',          # or an IP address
         'PORT': '5432',    
     }
