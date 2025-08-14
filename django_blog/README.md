@@ -209,3 +209,19 @@ Delete flow at /posts/<pk>/delete/.
 ## Permissions
 - Only authenticated users can comment.
 - Only comment authors can edit/delete their own comments.
+
+# Blog Tagging & Search Features
+
+## Tagging
+- You can add tags when creating or editing a post.
+- Tags are entered as a comma-separated list.
+- Tags appear under each post. Clicking a tag shows all posts with that tag.
+
+## Search
+- Use the search bar on the post list page.
+- Searches title, content, and tags.
+- Results are displayed on the same page with pagination.
+
+## URLs
+- `/` → All posts (with search)
+- `/tags/<tag_name>/` → Posts with a specific tag
