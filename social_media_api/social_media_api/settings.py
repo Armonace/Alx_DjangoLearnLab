@@ -171,3 +171,8 @@ MEDIA_ROOT = BASE_DIR / "media"
 # AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
 # AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 # AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME")
+
+import os
+
+# Get PORT from environment (Heroku/Docker usually sets this)
+PORT = os.getenv("PORT", "8000")  # default to 8000 for local dev
