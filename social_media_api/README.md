@@ -27,3 +27,11 @@ cd myproject
 python -m venv venv
 source venv/bin/activate   # Linux/Mac
 venv\Scripts\activate      # Windows
+
+Endpoints
+Endpoint	Method	Description	Auth Required
+/accounts/follow/<id>/	POST	Follow a user	✅ Yes
+/accounts/unfollow/<id>/	POST	Unfollow a user	✅ Yes
+/api/feed/	GET	Get posts from followed users	✅ Yes
+
+✅ Deliverables included:
