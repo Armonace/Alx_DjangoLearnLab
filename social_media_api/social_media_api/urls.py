@@ -23,3 +23,7 @@ urlpatterns = [
     path("accounts/", include("accounts.urls")),
     path("api/", include("posts.urls")),
 ]
+
+from django.http import JsonResponse
+def health(_): return JsonResponse({"status": "ok"})
+urlpatterns += [path("health/", health)]
