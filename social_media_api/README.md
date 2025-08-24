@@ -35,3 +35,15 @@ Endpoint	Method	Description	Auth Required
 /api/feed/	GET	Get posts from followed users	✅ Yes
 
 ✅ Deliverables included:
+
+Like a Post
+POST /posts/{post_id}/like/
+→ { "detail": "Post liked!" }
+
+Unlike a Post
+POST /posts/{post_id}/unlike/
+→ { "detail": "Post unliked." }
+
+Get Notifications
+GET /notifications/
+→ returns list of notifications, with newest first

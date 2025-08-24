@@ -1,4 +1,6 @@
 from django.test import TestCase
+
+# posts/tests.py
 from rest_framework.test import APITestCase
 from django.contrib.auth import get_user_model
 from .models import Post, Like
